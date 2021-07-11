@@ -14,11 +14,10 @@ class LayeredApp extends Psr100Factory implements LayeredAppInterface{
 
 	const STAGE_BEFORE = 1;
 	const STAGE_FRONT = 2;
-	const STAGE_MIDDLE_IN = 4;
-	const STAGE_MIDDLE_OUT = 8;
-	const STAGE_CORE = 16;
-	const STAGE_BACK = 32;
-	const STAGE_AFTER = 64;
+	const STAGE_MIDDLE = 4;
+	const STAGE_CORE = 8;
+	const STAGE_BACK = 16;
+	const STAGE_AFTER = 32;
 
 	private $stage; #< the current stage of running outer and middleware
 
@@ -109,14 +108,14 @@ class LayeredApp extends Psr100Factory implements LayeredAppInterface{
 			}
 			if(!($response instanceof ExitResponseInterface)){
 				# continuing normally, move to next stage
-				$this->stage = self::STAGE_MIDDLE_IN;
+				$this->stage = self::STAGE_MIDDLE;
 				$initializing_middle = true;
 			}
 		}
 		#+ }
 
 		#+ run middleware {
-		if($this->stage === self::STAGE_MIDDLE_IN){
+		if($this->stage === self::STAGE_MIDDLE){
 			/*
 			The layers of middleware mean that handle is called multiple times.
 			Each time handle is called, this represents a more inner layer of
@@ -158,7 +157,7 @@ class LayeredApp extends Psr100Factory implements LayeredAppInterface{
 			wrapper
 			*/
 			else{
-				if($this->stage === self::STAGE_MIDDLE_IN){
+				if($this->stage === self::STAGE_MIDDLE){
 					$this->stage = self::STAGE_CORE;
 				}
 			}
