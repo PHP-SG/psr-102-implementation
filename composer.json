@@ -1,0 +1,26 @@
+{
+    "name": "psg/psr-102-implementation",
+    "description": "App Standardization Prototype",
+    "keywords": ["psr", "psr-101", "http", "http-message", "request", "response", "factory"],
+    "homepage": "https://github.com/php-sg/psr-100",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PHP-SG",
+            "homepage": "http://php-sg.org/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "psg/psr-100": "^0.2.0",
+        "psg/psr-100-implementation": "^0.2.0",
+        "psg/psr-101": "^0.4.0",
+        "psg/psr-102": "^0.1.0"
+
+    },
+    "autoload": {
+        "psr-4": {
+            "Psg\\Psr102\\": "src/"
+        }
+    }
+}
